@@ -1,0 +1,14 @@
+dist
+demo
+node_modules
+bower_components
+bower_home
+Desktop.ini
+.idea
+.project
+.settings
+.DS_Store
+*.diff
+*.patch
+*.log
+*~
