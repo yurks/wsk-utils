@@ -1,2 +1,2 @@
 # wsk-utils
-wsk-utils
+Web Starter Kit utilities.

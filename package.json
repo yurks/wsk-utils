@@ -1,0 +1,24 @@
+{
+  "name": "wsk-utils",
+  "version": "1.0.0",
+  "description": "Web Starter Kit utilities.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurks/wsk-utils.git"
+  },
+  "keywords": [
+    "utils",
+    "js",
+    "browser",
+    "wsk"
+  ],
+  "author": "Yurk Sha (http://yurks.github.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yurks/wsk-utils/issues"
+  },
+  "homepage": "https://github.com/yurks/wsk-utils#readme"
+}
