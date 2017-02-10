@@ -1,5 +1,6 @@
 var isObject = require('../is/object');
 var isString = require('../is/string');
+var isUndefined = require('../is/undefined');
 
 module.exports = function get(object, path, def) {
   if (isObject(object)) {
@@ -12,7 +13,7 @@ module.exports = function get(object, path, def) {
       if (path.length) {
         return get(object[key], path, def);
       } else {
-        return object[key] || def;
+        return isUndefined(object[key]) ? def : object[key];
       }
     }
   }
