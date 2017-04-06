@@ -1,4 +1,3 @@
-var each = require('../var/object/each');
 var param = require('./param');
 var isObject = require('../var/is/object');
 var isString = require('../var/is/string');

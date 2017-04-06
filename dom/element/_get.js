@@ -4,8 +4,8 @@ var toArray = require('../../var/object/to-array');
 
 var isQuerySelectorAll = !!document.querySelectorAll;
 
-var re_isIdSelector = /^#[^\s\.\[]+$/;
-var re_isTagSelector = /^[^\s\.\[#]+$/;
+var re_isIdSelector = /^#[^\s.\[]+$/;
+var re_isTagSelector = /^[^\s.\[#]+$/;
 
 // only simple selectors like #id, .classname, tag
 module.exports = function(_single, _legacy) {
@@ -37,6 +37,6 @@ module.exports = function(_single, _legacy) {
             }
         }
         return _single ? node[0] : toArray(node);
-    }
+    };
 
 };

@@ -3,10 +3,10 @@ var isArray = require('../var/is/object/array');
 var isUndefined = require('../var/is/undefined');
 
 //based on jQuery BBQ: Back Button & Query Library - v1.3pre - 8/26/2010 (http://benalman.com/projects/jquery-bbq-plugin/)
-var coerce_types = { 'true': true, 'false': false, 'null': null, 'undefined': undefined };
+var coerce_types = { 'true': true, 'false': false, 'null': null, 'undefined': void 0 };
 var r20 = /\+/g;
-var rbracket = /]$/;
-var lbracket = /\[/;
+var r_bracket = /]$/;
+var l_bracket = /\[/;
 
 module.exports = function(params, coerce) {
     var obj = {};
@@ -21,9 +21,9 @@ module.exports = function(params, coerce) {
 
         // If the first keys part contains [ and the last ends with ], then []
         // are correctly balanced.
-        if (lbracket.test(keys[0]) && rbracket.test(keys[ keys_last ])) {
+        if (l_bracket.test(keys[0]) && r_bracket.test(keys[ keys_last ])) {
             // Remove the trailing ] from the last keys part.
-            keys[ keys_last ] = keys[ keys_last ].replace(rbracket, '');
+            keys[ keys_last ] = keys[ keys_last ].replace(r_bracket, '');
 
             // Split first keys part into two parts on the [ and add them back onto
             // the beginning of the keys array.
@@ -82,7 +82,7 @@ module.exports = function(params, coerce) {
 
         } else if (key) {
             // No value was defined, so set something meaningful.
-            obj[key] = coerce ? undef : '';
+            obj[key] = coerce ? void 0 : '';
         }
     });
 

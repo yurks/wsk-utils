@@ -7,5 +7,5 @@ var legacyQuerySelector = function(node, selector) {
 var get = require('./_get')(true, legacyQuerySelector);
 
 module.exports = function(selector, node) {
-    return filterNode(selector) || get(selector, node) || null
+    return filterNode(selector) || get(selector, node) || null;
 };

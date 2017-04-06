@@ -38,7 +38,7 @@ var _root = {
     target: function(e) {
         var target = e.target || e.srcElement;
         // defeat Safari bug
-        if (target && target.nodeType == 3) {
+        if (target && target.nodeType === 3) {
             target = target.parentNode;
         }
         return target;

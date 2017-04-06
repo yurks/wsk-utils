@@ -1,7 +1,6 @@
 var isString = require('../is/string');
 var isArray = require('../is/object/array');
 var each = require('../object/each');
-var quoteattr = require('./quoteattr');
 
 var renderAttr = function(key, value, attrs) {
     attrs.push((key === 'classname' ? 'class' : key) + '="' + value + '"');

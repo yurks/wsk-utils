@@ -1,12 +1,12 @@
 var isString = require('../../var/is/string');
 var fieldIsSubmittable = require('./submittable');
 
-var rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i;
-var rreturn = /\r/g;
+var re_submitterTypes = /^(?:submit|button|image|reset|file)$/i;
+var re_return = /\r/g;
 
 var isValue = function (el, withDisabled) {
     return !!el && el.name && (!withDisabled || el.disabled !== true) &&
-        fieldIsSubmittable(el) && !rsubmitterTypes.test(el.type) &&
+        fieldIsSubmittable(el) && !re_submitterTypes.test(el.type) &&
         (el.checked || (el.type !== 'checkbox' && el.type !== 'radio'));
 };
 
@@ -25,7 +25,7 @@ var getControlValue = function(el) {
     }
     return isString(val) ?
         // handle most common string cases
-        val.replace(rreturn, '') :
+        val.replace(re_return, '') :
         // handle cases where value is null/undef or number
         val == null ? '' : val+'';
 };

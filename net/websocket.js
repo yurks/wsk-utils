@@ -6,7 +6,7 @@ module.exports = function(url, interval) {
     var onOpen = function(e) {
         _root.connection = e.target;
         _root.isConnected = true;
-    }
+    };
 
     var onClose = function() {
         _root.connection = null;
@@ -14,7 +14,7 @@ module.exports = function(url, interval) {
         if (started) {
             setTimeout(connect, interval || 5000);
         }
-    }
+    };
 
     var connect = function() {
         var ws = new WebSocket(url);
@@ -22,7 +22,7 @@ module.exports = function(url, interval) {
         ws.onclose = onClose;
         ws.onmessage = _root.onmessage;
         ws.onerror = _root.onerror;
-    }
+    };
 
     var _root = {
         connection: null,

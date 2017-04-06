@@ -1,7 +1,7 @@
-var re_isIdSelector = /^#[^\s\.\[]+$/;
-var re_isTagSelector = /^[^\s\.\[#]+$/;
-var re_isClassSelector = /^\.[^\s\.#:\[]+$/;
-var re_isAttrSelector = /^\[[a-z0-9_:\.\-]+]$/i;
+var re_isIdSelector = /^#[^\s.\[]+$/;
+var re_isTagSelector = /^[^\s.\[#]+$/;
+var re_isClassSelector = /^\.[^\s.#:\[]+$/;
+var re_isAttrSelector = /^\[[a-z0-9_:.\-]+]$/i;
 
 module.exports = function(selector, node) {
     if (re_isIdSelector.test(selector)) {

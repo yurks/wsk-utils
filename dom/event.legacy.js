@@ -1,6 +1,7 @@
 var _root = require('./event');
 var all = require('./element/all');
 var window = require('./window');
+var document = require('./document');
 
 var fieldIsSubmittable = require('./control/submittable');
 
@@ -31,8 +32,8 @@ var ie8fixAdd = function(el, event, callback) {
         el._ie8fixId = ie8fixesStore.length;
 
         window.off = function() {
-            _root.off(el, event, callback)
-        }
+            _root.off(el, event, callback);
+        };
 
     }
 };
@@ -46,7 +47,7 @@ var ie8fixRemove = function(el, event, callback) {
             el._ie8fixId = 0;
             ie8fixClearing(all('input'), callback);
             ie8fixClearing(all('select'), callback);
-            ie8fixClearing(all('texarea'), callback);
+            ie8fixClearing(all('textarea'), callback);
         }
     }
 };
@@ -55,7 +56,7 @@ var fixFocusBlurIe = function(event_type) {
     if (event_type === 'focus') {
         return 'focusin';
     }
-    if (event_type == 'blur') {
+    if (event_type === 'blur') {
         return 'focusout';
     }
     return event_type;
@@ -71,7 +72,7 @@ _root._legacyOff = function(el, event, callback) {
     ie8fixRemove(el, event, callback);
 };
 
-_root._legacyTrigger = function(el, event_name, bubbles, cancelable) {
+_root._legacyTrigger = function(el, event_name) {
     var event = document.createEventObject();
     el.fireEvent('on' + event_name, event);
 };

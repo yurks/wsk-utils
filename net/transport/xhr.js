@@ -32,13 +32,13 @@ module.exports = function(url, callback, request_data, type, opts) {
             var isSuccess = status >= 200 && status < 300 || status === 304;
             if (isSuccess) {
                 try {
-                    out = JSON.parse(body)
+                    out = JSON.parse(body);
                 } catch (e) {
-                    statusText = "Invalid response body";
+                    statusText = 'Invalid response body';
                 }
             }
             callback(out && isObject(out) ? out : false, status, statusText, headers, request);
-        })
+        });
     };
 
     request();
@@ -112,7 +112,7 @@ function sendXHR ( options, headers, complete ) {
                     statusText = xhr.statusText;
                 } catch( e ) {
                     // We normalize with Webkit giving an empty statusText
-                    statusText = "";
+                    statusText = '';
                 }
 
 
@@ -139,12 +139,12 @@ function sendXHR ( options, headers, complete ) {
     };
 
     // Cannot set timeout with sync request
-    // not setting timeout on the xhr object, because of old webkits etc. not handling that correctly
-    // both npm's request and jquery 1.x use this kind of timeout, so this is being consistent
+    // not setting timeout on the xhr object, because of old webkit etc. not handling that correctly
+    // both npm request and jquery 1.x use this kind of timeout, so this is being consistent
     if (options.timeout > 0) {
         timeoutTimer = timer.set(function(){
             callback( undefined, 'timeout' );
-        }, options.timeout )
+        }, options.timeout );
     }
 
     // Add to the list of active xhr callbacks

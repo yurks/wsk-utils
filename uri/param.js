@@ -3,14 +3,14 @@ var isObject = require('../var/is/object');
 var isFunction = require('../var/is/function');
 
 var r20 = /%20/g;
-var rbracket = /\[]$/;
+var r_bracket = /\[]$/;
 
 function buildParams(prefix, obj, array_as_scalar, add) {
     var key;
     if (isArray(obj)) {
         // Serialize array item.
         for (key = 0; key < obj.length; key+=1) {
-            if ((array_as_scalar && !isObject(obj[key])) || rbracket.test(prefix)) {
+            if ((array_as_scalar && !isObject(obj[key])) || r_bracket.test(prefix)) {
                 // Treat each array item as a scalar.
                 add(prefix, obj[key]);
             } else {
@@ -33,7 +33,7 @@ function buildParams(prefix, obj, array_as_scalar, add) {
     }
 }
 
-module.exports = function(a, array_as_scalar, returnPairs) { //TODO: check if returnPairs realy needed
+module.exports = function(a, array_as_scalar, returnPairs) { //TODO: check if returnPairs really needed
     array_as_scalar = array_as_scalar !== false;
     var prefix,
         s = returnPairs ? {} : [],

@@ -21,7 +21,7 @@ var urlValidate = require('../../uri/validate');
 
 var re_host_replace = /#.*$/;
 
-var oldBrowserIframeAttrs = {name: null, id: null, style: "width:0;height:0;border:0;padding:0;margin:0;visibility:'hidden'"};
+var oldBrowserIframeAttrs = {name: null, id: null, style: 'width:0;height:0;border:0;padding:0;margin:0;visibility:"hidden"'};
 var oldBrowserIframeRender = function() {
     oldBrowserIframeAttrs.name = oldBrowserIframeAttrs.id = 'oldbrowser-' + random();
     return html('<html><body></body></html>', oldBrowserIframeAttrs, 'iframe');
@@ -196,7 +196,9 @@ module.exports = function(url, callback, request_data, type, opts) {
         //context.attempts -= 1;
         timer.set(function() {
             var form = oldBrowserIframeGetTag(context.iframe, 'form');
-            form && form.submit();
+            if (form) {
+                form.submit();
+            }
         }, 1);
     };
 
@@ -209,7 +211,7 @@ module.exports = function(url, callback, request_data, type, opts) {
             context.timeout = timer.set(function() {
                 context.iframe.src = 'about:blank';
                 onIframeSubmitted('timeout');
-            }, timeout)
+            }, timeout);
         }
     };
 

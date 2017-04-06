@@ -1,5 +1,5 @@
 //chars for generating random string
-var randomize = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+var randomize = '0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'.split('');
 
 //$global.randomId based on https://github.com/aaronblohowiak/Random-ID
 module.exports = function(len, radix) {

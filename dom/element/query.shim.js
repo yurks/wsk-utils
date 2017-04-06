@@ -5,7 +5,8 @@ var query = function(selector) {
     nodes = nodes && nodes.getElementsByTagName('*');
 
     if (nodes && nodes.length) {
-        for (i in nodes) { //i could be a string index
+        // i could be a string index
+        for (i in nodes) { // jshint ignore:line
             //noinspection JSUnfilteredForInLoop
             node = nodes[i];
             if (node.length && !node.tagName && !node._ie7fixId) { //a bug with ie7 - when id and name attributes are not the same

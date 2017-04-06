@@ -2,7 +2,7 @@ var random = require('../../var/string/random');
 var isFunction = require('../../var/is/function');
 var timer = require('../../var/timer');
 var cbList = {};
-var reUrl = /^(https?\:\/\/)?[\w\.\-_\:]+/i;
+var reUrl = /^(https?:\/\/)?[\w.\-_:]+/i;
 
 module.exports = function(url, callback, request_data, type, opts) {
 
@@ -44,7 +44,7 @@ function sendWS(options, complete) {
         timeoutTimer = timer.set(function(){
             delete cbList[wsCallbackName];
             complete(false, 'timeout');
-        }, options.timeout)
+        }, options.timeout);
     }
 
     cbList[wsCallbackName] = function(data) {

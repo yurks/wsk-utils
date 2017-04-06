@@ -1,4 +1,4 @@
-var re_camelcase = /\-(\w)/g;
+var re_camelcase = /-(\w)/g;
 
 function cb_replace_toCamelCase(matches, letter) {
     return letter.toUpperCase();

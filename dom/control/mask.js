@@ -25,7 +25,7 @@ var isAndroid = (function() {
     //TODO: test and remove?
     if (android) {
         var browser = userAgent.match(/mobile safari.*/i);
-        var version = ~~/[0-9]+/.exec(browser);
+        var version = ~~(/[0-9]+/.exec(browser+''));
         android = version > 0 && version <= 533;
     }
     return android;
@@ -54,6 +54,16 @@ var setStorage = function(input, data) {
 };
 
 var _empty = {};
+
+/**
+ * @param input
+ * @param settings
+ * @param settings.mask
+ * @param settings.placeholder
+ * @param settings.completed
+ * @param settings.patterns
+ * @param settings.onchanged
+ */
 var Mask = function(input, settings) {
     if (!(settings && input && input.nodeType && input.tagName === 'INPUT' && input.type === 'text')) {
         return;
@@ -74,9 +84,8 @@ var Mask = function(input, settings) {
 
     var placeholder = settings.placeholder || '_';
     var completedCallback = settings.completed;
-    var defs = settings.patterns || mask_patterns;
+    var patterns = settings.patterns || mask_patterns;
     var onChanged = settings.onchanged;
-
 
 
     var tests = [];
@@ -92,8 +101,8 @@ var Mask = function(input, settings) {
         if (_mask[i] === maskDefaultChar) {
             len -= 1;
             partialPosition = i;
-        } else if (defs[_mask[i]]) {
-            tests.push(defs[_mask[i]]);
+        } else if (patterns[_mask[i]]) {
+            tests.push(patterns[_mask[i]]);
             if (firstNonMaskPos === null) {
                 firstNonMaskPos = tests.length - 1;
             }
@@ -109,19 +118,17 @@ var Mask = function(input, settings) {
 
     for (i = _buffer.length; i--;) {
         if (_buffer[i] !== maskDefaultChar) {
-            buffer[i] = defs[_buffer[i]] ? placeholder : _buffer[i];
+            buffer[i] = patterns[_buffer[i]] ? placeholder : _buffer[i];
         }
     }
 
     function seekNext(pos) {
-        //noinspection StatementWithEmptyBodyJS
-        while (++pos < len && !tests[pos]);
+        while (++pos < len && !tests[pos]) {}
         return pos;
     }
 
     function seekPrev(pos) {
-        //noinspection StatementWithEmptyBodyJS
-        while (--pos >= 0 && !tests[pos]);
+        while (--pos >= 0 && !tests[pos]) {}
         return pos;
     }
 
@@ -366,7 +373,7 @@ var Mask = function(input, settings) {
         value: function() {
             var out = [];
             for (i = 0; i < buffer.length; i++) {
-                if (tests[i] && buffer[i] != placeholder) {
+                if (tests[i] && buffer[i] !== placeholder) {
                     out.push(buffer[i]);
                 }
             }
@@ -401,7 +408,7 @@ var _root = {
                     Mask(inputs[i-1], settings);
                 }
             } else {
-                Mask(inputs, settings)
+                Mask(inputs, settings);
             }
         }
     },
@@ -453,7 +460,7 @@ var _root = {
 
             var i = 0, m;
             for (; i < value.length; i++) {
-                while (m = mask[0]) {
+                while ((m = mask[0])) {
                     // console.log(i, m, v, out);
                     out += tests[m] && tests[m].test(value[i]) ? mask.shift() && value[i] : tests[m] ? '' : mask.shift();
                     if (tests[m]) {

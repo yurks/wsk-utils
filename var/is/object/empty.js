@@ -1,7 +1,7 @@
 module.exports = function(obj) {
+    var name;
     //noinspection LoopStatementThatDoesntLoopJS
-    //noinspection JSUnusedLocalSymbols
-    for (var name in obj) {
+    for (name in obj) { // jshint ignore:line
         return false;
     }
     return true;

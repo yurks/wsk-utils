@@ -58,7 +58,7 @@ function sendJSONP(options, complete) {
 
     script.onload = script.onreadystatechange = done = function(e, error) {
         if (script) {
-            if ( error || !script.readyState || re_complete.test(script.readyState)) {
+            if ( error || !script.readyState || re_complete.test(script.readyState+'')) {
                 // Handle memory leak in IE
                 script.onload = script.onreadystatechange = script.onerror = null;
 
@@ -97,7 +97,7 @@ function sendJSONP(options, complete) {
             done(false, 'timeout');
             // leave window[jsonpCallbackName]
             complete = noop;
-        }, options.timeout)
+        }, options.timeout);
     }
 
     window[jsonpCallbackName] = function(data) {

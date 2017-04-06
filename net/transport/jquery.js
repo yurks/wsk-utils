@@ -33,7 +33,7 @@ module.exports = function(url, callback, request_data, type, opts) {
     }
 
     var request = function() {
-        jQuery.ajax(config);
+        window.jQuery.ajax(config);
     };
 
     request();

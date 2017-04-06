@@ -1,4 +1,4 @@
-var rsubmittable = /^(?:input|select|textarea|keygen)/i;
+var re_submittable = /^(?:input|select|textarea|keygen)/i;
 module.exports = function(el) {
-    return !!(el && rsubmittable.test(el.nodeName));
+    return !!(el && re_submittable.test(el.nodeName));
 };
