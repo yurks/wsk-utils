@@ -1,11 +1,13 @@
-module.exports = function(obj, from) {
+module.exports = function(obj, from, array) {
     from = ~~from;
-    var array = [];
-    var i = ~~obj.length - (from > 0 ? from : -from);
+    array = array || [];
+    var i = ~~obj.length - (from > 0 ? from : -from),
+        len = array.length;
     from = from > 0 ? from : 0;
     // iterate backwards ensuring that length is an UInt32
-    for (; i-- >= 0; ) {
-        array[i] = obj[i+from];
+    i = i + len;
+    for (; --i >= len; ) {
+        array[i] = obj[i-len+from];
     }
     return array;
 };
