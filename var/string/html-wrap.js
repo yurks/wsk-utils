@@ -7,4 +7,3 @@ module.exports = function(inner, attrs, tag) {
     }
     return inner;
 };
-

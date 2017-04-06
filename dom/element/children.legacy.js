@@ -12,4 +12,3 @@ children._legacyNextElSibling = function(el, checkCurrent) {
 };
 
 module.exports = children;
-

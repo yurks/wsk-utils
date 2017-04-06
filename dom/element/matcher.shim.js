@@ -18,4 +18,3 @@ module.exports = function(selector, node) {
     }
     return false;
 };
-

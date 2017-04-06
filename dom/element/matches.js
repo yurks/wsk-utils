@@ -25,4 +25,3 @@ var matchesSelector = function(element, selector, boundElement) {
 matchesSelector.matcher = require('./matcher');
 
 module.exports = matchesSelector;
-

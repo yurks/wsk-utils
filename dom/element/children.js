@@ -17,4 +17,3 @@ var children = function(el) {
 };
 
 module.exports = children;
-

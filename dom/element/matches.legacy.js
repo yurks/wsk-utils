@@ -7,4 +7,3 @@ matches.matcher = function(selector, node) {
     return match === null ? matcherShim(selector, node) : match;
 };
 module.exports = matches;
-

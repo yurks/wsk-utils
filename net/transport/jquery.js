@@ -38,4 +38,3 @@ module.exports = function(url, callback, request_data, type, opts) {
 
     request();
 };
-

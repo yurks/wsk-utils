@@ -7,4 +7,3 @@ module.exports = function(selector, node) {
 
     return matches ? matches.call(node, selector) : null;
 };
-
