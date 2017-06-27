@@ -10,6 +10,7 @@ var fieldCaret = require('./caret');
 
 var mask_patterns = {
     '9': /[0-9]/,
+    '0': /[*0-9]/,
     'a': /[A-Za-z]/,
     '*': /[A-Za-z0-9]/
 };
