@@ -7,9 +7,13 @@ var re_isUrl = /.css$/;
 
 module.exports = function(css, append, className) {
     var isRemote = re_isUrl.test(css);
-    var attrs = {type: 'text/css', className: className || ''};
+    var attrs = {type: 'text/css'};
     if (isRemote) {
         attrs.rel = 'stylesheet';
+        attrs.href = css;
+    }
+    if (className) {
+        attrs.className = className;
     }
     var style = createEl(isRemote ? 'link' : 'style', attrs);
     if (append) {
