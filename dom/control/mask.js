@@ -66,7 +66,7 @@ var _empty = {};
  * @param settings.onchanged
  */
 var Mask = function(input, settings) {
-    if (!(settings && input && input.nodeType && input.tagName === 'INPUT' && input.type === 'text')) {
+    if (!(settings && input && input.nodeType && input.tagName === 'INPUT' && (input.type === 'text' || input.type === 'tel' ||input.type === 'email'))) {
         return;
     }
 
