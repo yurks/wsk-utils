@@ -1,14 +1,6 @@
-'use strict';
-
 var isString = require('wsk-utils/var/is/string');
 var urlData = require('wsk-utils/uri/add-query');
 var noop = require('wsk-utils/var/noop');
-
-var querystring = require('querystring');
-var url = require('url');
-var http = require('http');
-var https = require('https');
-var zlib = require('zlib');
 
 module.exports = function(url, callback, request_data, type, opts) {
     callback = callback || noop;
@@ -32,6 +24,12 @@ module.exports = function(url, callback, request_data, type, opts) {
 };
 
 function send(config, complete, data) {
+
+    var querystring = require('querystring');
+    var url = require('url');
+    var http = require('http');
+    var https = require('https');
+    var zlib = require('zlib');
 
     if (data) {
         if (config.method === 'GET') {
@@ -69,7 +67,7 @@ function send(config, complete, data) {
             output = zlib.createGunzip();
             res.pipe(output);
         }
-        
+
         output.setEncoding('utf8');
 
         var body = '', json;
@@ -97,4 +95,4 @@ function send(config, complete, data) {
     }
 
     req.end();
-};
+}
