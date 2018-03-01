@@ -2,7 +2,6 @@ var document = require('../../document');
 var get = require('../get');
 var prependEl = require('../prepend');
 var createEl = require('../create');
-var head = document.head || get('head');
 var re_isUrl = /.css$/;
 
 module.exports = function(css, append, className) {
@@ -16,6 +15,8 @@ module.exports = function(css, append, className) {
         attrs.className = className;
     }
     var style = createEl(isRemote ? 'link' : 'style', attrs);
+    var head = document.head || get('head');
+
     if (append) {
         prependEl(style, append === true ? head : append);
     }

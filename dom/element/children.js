@@ -1,6 +1,6 @@
 var document = require('../document');
-var w3c_first = 'firstElementChild' in document.documentElement;
-var w3c_next = 'nextElementSibling' in document.documentElement;
+var w3c_first = !!(document.documentElement && ('firstElementChild' in document.documentElement));
+var w3c_next = !!(document.documentElement && ('nextElementSibling' in document.documentElement));
 
 var children = function(el) {
     var out = [];
