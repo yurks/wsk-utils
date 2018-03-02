@@ -23,13 +23,14 @@ module.exports = function(url, callback, request_data, type, opts) {
     request();
 };
 
-function send(config, complete, data) {
 
-    var querystring = require('querystring');
-    var url = require('url');
-    var http = require('http');
-    var https = require('https');
-    var zlib = require('zlib');
+var querystring = require('querystring');
+var url = require('url');
+var http = require('http');
+var https = require('https');
+var zlib = require('zlib');
+
+function send(config, complete, data) {
 
     if (data) {
         if (config.method === 'GET') {
