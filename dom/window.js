@@ -2,4 +2,4 @@
  @type {Window}
  @const
  */
-module.exports = (typeof window !== 'undefined' ? window : null) || $$vars.window || this || {}; // jshint ignore:line
+module.exports = (typeof window !== 'undefined' ? window : null) || (typeof $$vars !== 'undefined' && $$vars.window) || this || {}; // jshint ignore:line
